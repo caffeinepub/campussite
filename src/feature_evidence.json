@@ -1,0 +1,138 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-clone-style-marketing-website-modeled-on-the-overall-structure-and-information-architecture-of-https-darshan-ac-in-but-with-fully-replaced-branding-so-it-is-clearly-a-different-site-new-institution-name-logo-wordmark-and-consistent-site-title-across-header-footer-and-metadata",
+      "featureTitle": "Create a clone-style marketing website modeled on the overall structure and information architecture of https://darshan.ac.in, but with fully replaced branding so it is clearly a different site (new institution name, logo/wordmark, and consistent site title across header, footer, and metadata).",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/App.tsx",
+        "frontend/src/components/site/Footer.tsx",
+        "frontend/src/components/site/Header.tsx",
+        "frontend/src/components/site/MainLayout.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-replace-all-contact-details-and-address-content-across-the-site-with-the-new-contact-details-and-new-address-and-centralize-these-values-in-a-single-frontend-configuration-object-so-they-can-be-updated-in-one-place-without-hunting-through-multiple-components",
+      "featureTitle": "Replace all contact details and address content across the site with the new contact details and new address, and centralize these values in a single frontend configuration object so they can be updated in one place without hunting through multiple components.",
+      "files": [
+        "frontend/src/components/site/Footer.tsx",
+        "frontend/src/components/site/Header.tsx",
+        "frontend/src/pages/ContactPage.tsx",
+        "frontend/src/siteConfig.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-fresh-coherent-visual-theme-that-is-different-from-darshan-ac-in-including-a-distinct-color-palette-avoid-blue-purple-typography-button-styling-and-section-layout-rhythm-enforce-this-theme-consistently-across-all-pages-and-components",
+      "featureTitle": "Apply a fresh, coherent visual theme that is different from darshan.ac.in, including a distinct color palette (avoid blue/purple), typography, button styling, and section layout rhythm; enforce this theme consistently across all pages and components.",
+      "files": [
+        "frontend/src/components/site/MainLayout.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-the-primary-pages-sections-commonly-expected-from-the-darshan-ac-in-style-college-site-e-g-home-about-academics-departments-admissions-placements-news-events-contact-with-responsive-layouts-for-mobile-tablet-and-desktop-using-english-for-all-user-facing-text",
+      "featureTitle": "Implement the primary pages/sections commonly expected from the darshan.ac.in-style college site (e.g., Home, About, Academics/Departments, Admissions, Placements, News/Events, Contact) with responsive layouts for mobile, tablet, and desktop, using English for all user-facing text.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/site/Header.tsx",
+        "frontend/src/pages/AboutPage.tsx",
+        "frontend/src/pages/AcademicsPage.tsx",
+        "frontend/src/pages/AdmissionsPage.tsx",
+        "frontend/src/pages/ContactPage.tsx",
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/pages/NewsEventsPage.tsx",
+        "frontend/src/pages/PlacementsPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-lightweight-content-strategy-so-the-site-can-be-populated-without-backend-work-create-structured-frontend-data-files-for-repeated-content-e-g-departments-list-highlights-stats-events-and-render-sections-from-that-data-rather-than-hardcoding-repeated-markup",
+      "featureTitle": "Add a lightweight content strategy so the site can be populated without backend work: create structured frontend data files for repeated content (e.g., departments list, highlights, stats, events) and render sections from that data rather than hardcoding repeated markup.",
+      "files": [
+        "frontend/src/components/sections/DepartmentsGrid.tsx",
+        "frontend/src/components/sections/EventsList.tsx",
+        "frontend/src/content/departments.ts",
+        "frontend/src/content/events.ts",
+        "frontend/src/pages/AcademicsPage.tsx",
+        "frontend/src/pages/HomePage.tsx",
+        "frontend/src/pages/NewsEventsPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-generated-original-static-assets-logo-wordmark-and-a-hero-banner-illustration-and-use-them-in-the-header-and-homepage-hero-section-via-the-frontend-public-assets-pipeline",
+      "featureTitle": "Add generated, original static assets (logo/wordmark and a hero/banner illustration) and use them in the header and homepage hero section via the frontend public assets pipeline.",
+      "files": [
+        "frontend/src/components/site/Footer.tsx",
+        "frontend/src/components/site/Header.tsx",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

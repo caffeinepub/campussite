@@ -1,0 +1,88 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-17T15:57:56.332Z",
+  "summary": "Diff adds a React hash-routed marketing site skeleton with header/footer, multiple pages, warm amber theme variables, and structured content data for departments/events. However, evidence is missing for required generated static assets being present in public, browser metadata/title updates, centralized site/contact configuration definition, and the required icon sprite asset usage.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "Browser tab title and visible branding must match the new institution name consistently across header, footer, and metadata; remove any Darshan references; do not hot-link darshan.ac.in assets.",
+      "reason": "Header/footer appear to use a new name via siteConfig, but there is no evidence of metadata/browser tab title updates (e.g., index.html/head management) in the diff summary.",
+      "evidence": [
+        "frontend/src/components/site/Header.tsx",
+        "frontend/src/components/site/Footer.tsx",
+        "frontend/src/App.tsx"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "requirement": "Centralize new contact details/address in a single frontend configuration object and ensure all contact/address strings source from it.",
+      "reason": "Components reference a centralized config (siteConfig), but the actual configuration object/file contents are not shown/added in the diff summary, and the footer contact section is truncated so it cannot be verified that all contact details are sourced from config.",
+      "evidence": [
+        "frontend/src/components/site/Footer.tsx",
+        "frontend/src/components/site/Header.tsx",
+        "frontend/src/pages/ContactPage.tsx"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "requirement": "Add generated static assets under frontend/public/assets/generated (logo/wordmark, hero/banner illustration, and required icon sprite) and reference them from the frontend.",
+      "reason": "Code references the wordmark and hero image paths, but the diff summary does not show any files added under frontend/public/assets/generated, and there is no evidence of the required monochrome icon sprite being added or used.",
+      "evidence": [
+        "frontend/src/components/site/Header.tsx",
+        "frontend/src/components/site/Footer.tsx",
+        "frontend/src/pages/HomePage.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Internet Identity authentication scaffolding and React Query setup for a marketing site.",
+      "reason": "BuildRequest states authentication is not required for this marketing site (though II is supported). The diff adds an InternetIdentityProvider, useActor hook, and React Query client even though no marketing-site requirements call for auth/actor usage.",
+      "evidence": [
+        "frontend/src/main.tsx",
+        "frontend/src/hooks/useInternetIdentity.ts",
+        "frontend/src/hooks/useActor.ts",
+        "frontend/src/hooks/useQueries.ts"
+      ]
+    },
+    {
+      "description": "Client-side contact form submission UX using alert().",
+      "reason": "REQs do not request a contact inquiry form or any submission behavior; the page includes a non-submitting form handler that triggers an alert.",
+      "evidence": [
+        "frontend/src/pages/ContactPage.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.62,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/sections/DepartmentsGrid.tsx",
+    "frontend/src/components/sections/EventsList.tsx",
+    "frontend/src/components/site/Footer.tsx",
+    "frontend/src/components/site/Header.tsx",
+    "frontend/src/components/site/MainLayout.tsx",
+    "frontend/src/content/departments.ts",
+    "frontend/src/content/events.ts",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/AboutPage.tsx",
+    "frontend/src/pages/AcademicsPage.tsx",
+    "frontend/src/pages/AdmissionsPage.tsx",
+    "frontend/src/pages/ContactPage.tsx",
+    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/pages/NewsEventsPage.tsx",
+    "frontend/src/pages/PlacementsPage.tsx",
+    "frontend/src/siteConfig.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

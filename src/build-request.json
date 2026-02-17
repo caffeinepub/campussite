@@ -1,0 +1,129 @@
+{
+  "kind": "build_request",
+  "title": "Clone-style college website based on darshan.ac.in with new branding and theme",
+  "projectName": "CampusSite",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a clone-style marketing website modeled on the overall structure and information architecture of https://darshan.ac.in, but with fully replaced branding so it is clearly a different site (new institution name, logo/wordmark, and consistent site title across header, footer, and metadata).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "create a clone website of darshan.ac.in but change the name, contact details, address and theme"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The site layout and navigation are clearly inspired by darshan.ac.in (similar page/section structure), but all visible branding text uses the new institution name (no 'Darshan' references remain).",
+        "Browser tab title and any visible header/footer branding match the new institution name.",
+        "No external assets (images/icons) are hot-linked from darshan.ac.in."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Replace all contact details and address content across the site with the new contact details and new address, and centralize these values in a single frontend configuration object so they can be updated in one place without hunting through multiple components.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "change the name, contact details, address"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Contact phone/email/address shown anywhere on the site are sourced from a single configuration file/object (single source of truth).",
+        "Footer and Contact page (or equivalent contact section) display the updated contact details and address.",
+        "A basic on-screen search through the codebase for the old values finds none (no stale contact/address strings)."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Apply a fresh, coherent visual theme that is different from darshan.ac.in, including a distinct color palette (avoid blue/purple), typography, button styling, and section layout rhythm; enforce this theme consistently across all pages and components.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "change the name, contact details, address and theme"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The site uses a consistent, non-blue/non-purple primary palette (e.g., warm neutrals + an accent) across header, buttons, links, and highlights.",
+        "Typography choices (headings/body) and spacing scale are consistent across pages.",
+        "Key interactive states (hover/focus/active) match the new theme and remain accessible (focus is clearly visible)."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement the primary pages/sections commonly expected from the darshan.ac.in-style college site (e.g., Home, About, Academics/Departments, Admissions, Placements, News/Events, Contact) with responsive layouts for mobile, tablet, and desktop, using English for all user-facing text.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "create a clone website of darshan.ac.in"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Navigation provides working routes/sections for the chosen set of pages that mirror the darshan.ac.in-style structure.",
+        "All pages render correctly on small screens (no horizontal overflow) and adapt layout at typical breakpoints.",
+        "All user-facing text in the app is in English."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Add a lightweight content strategy so the site can be populated without backend work: create structured frontend data files for repeated content (e.g., departments list, highlights, stats, events) and render sections from that data rather than hardcoding repeated markup.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ]
+      },
+      "acceptanceCriteria": [
+        "At least two repeatable site sections (e.g., departments cards, events list) are rendered from a typed data structure.",
+        "Updating the data file changes rendered content without modifying component structure.",
+        "No backend canister changes are required to update this content."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Add generated, original static assets (logo/wordmark and a hero/banner illustration) and use them in the header and homepage hero section via the frontend public assets pipeline.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Generated images exist under frontend/public/assets/generated and are referenced directly from the frontend (not through the backend).",
+        "The new logo/wordmark is visible in the site header and footer (or equivalent branding area).",
+        "The homepage hero/banner uses the generated hero image and matches the new theme."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify any files under frontend/src/components/ui (compose these components instead).",
+    "Do not edit files in frontend immutablePaths (authentication/actor hooks and main entry files); build the site using normal React composition around the template.",
+    "Keep the backend as a single Motoko actor; no additional backend services."
+  ],
+  "nonGoals": [
+    "Do not copy or reuse darshan.ac.in proprietary text verbatim; create original English copy that is structurally similar but not duplicated.",
+    "Do not implement third-party authentication providers (only Internet Identity is supported, and authentication is not required for this marketing site).",
+    "Do not add real-time features (WebSockets/chat/notifications).",
+    "Do not integrate external databases or third-party CMS."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Original logo/wordmark in a modern academic style, transparent background (campus-wordmark.dim_512x160.png)",
+      "Wide hero/banner illustration in the new theme, abstract campus/education motif (hero-banner.dim_1600x600.png)",
+      "Simple monochrome icon set (4 icons) matching the theme (theme-icons-sprite.dim_512x512.png)"
+    ],
+    "edits": []
+  }
+}

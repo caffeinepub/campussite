@@ -1,0 +1,22 @@
+{
+  "frontend/src/siteConfig.ts": "Single source of truth configuration object containing institution name, contact details, address, and social links used throughout the site.",
+  "frontend/src/content/departments.ts": "Typed department/program data structure with details for all academic programs, rendered across Home and Academics pages.",
+  "frontend/src/content/events.ts": "Typed events/news data structure with categorized entries for rendering in Home preview and News/Events page.",
+  "frontend/src/components/site/MainLayout.tsx": "Shared layout wrapper component enforcing consistent header/footer structure and spacing across all pages.",
+  "frontend/src/components/site/Header.tsx": "Responsive header component with navigation, branding wordmark, utility contact bar, and mobile menu using Sheet component.",
+  "frontend/src/components/site/Footer.tsx": "Site footer with branding, quick links, programs list, contact details from config, social links, and caffeine.ai attribution.",
+  "frontend/src/components/sections/DepartmentsGrid.tsx": "Reusable departments grid component that maps over typed department data with optional limit prop.",
+  "frontend/src/components/sections/EventsList.tsx": "Reusable events/news list component rendering from typed data with optional category filter and limit.",
+  "frontend/src/pages/HomePage.tsx": "Responsive home page with hero section using generated banner, stats highlights, departments preview, events preview, and CTA sections.",
+  "frontend/src/pages/AboutPage.tsx": "About page featuring mission/vision cards, core values grid, and campus life highlights with icons.",
+  "frontend/src/pages/AcademicsPage.tsx": "Academics page displaying academic highlights and full departments grid rendered from typed data.",
+  "frontend/src/pages/AdmissionsPage.tsx": "Admissions page with process steps, important dates timeline, FAQ accordion, and application CTA.",
+  "frontend/src/pages/PlacementsPage.tsx": "Placements page showcasing statistics, top recruiters list, placement support features, and student testimonials.",
+  "frontend/src/pages/NewsEventsPage.tsx": "News and events page with tabbed interface for filtering by category (all, events, news, achievements).",
+  "frontend/src/pages/ContactPage.tsx": "Contact page with detailed contact information from config, office hours, and inquiry form (non-submitting demo).",
+  "frontend/src/App.tsx": "Main application component implementing hash-based routing and wrapping all pages with MainLayout.",
+  "frontend/src/index.css": "Global styles with warm amber/orange OKLCH color system for light and dark modes, avoiding blue/purple palette.",
+  "frontend/tailwind.config.js": "Tailwind configuration with custom font families (Inter, Poppins) and extended theme matching the warm color palette.",
+  "frontend/index.html": "HTML entry point with updated title for Pinnacle Institute and Google Fonts preconnect for Inter and Poppins.",
+  "frontend/src/hooks/useQueries.ts": "Empty placeholder file for React Query hooks (no backend operations needed for this static marketing site)."
+}

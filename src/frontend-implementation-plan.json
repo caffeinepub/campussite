@@ -1,0 +1,243 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "CampusSite — Rebranded darshan.ac.in-style college marketing site (frontend-only)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Build a darshan.ac.in-inspired college marketing site structure with fully replaced branding (new institution name/logo/site title) and no external hot-linked assets.",
+      "acceptanceCriteria": [
+        "The site layout and navigation are clearly inspired by darshan.ac.in (similar page/section structure), but all visible branding text uses the new institution name (no 'Darshan' references remain).",
+        "Browser tab title and any visible header/footer branding match the new institution name.",
+        "No external assets (images/icons) are hot-linked from darshan.ac.in."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Update document title and basic metadata to the new institution name/site title; ensure no references to the source site remain."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the app shell with top-level layout, routing, and consistent branding usage (site title/wordmark in header/footer); compose shadcn-ui components (do not modify frontend/src/components/ui). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/site/Header.tsx",
+          "operation": "create",
+          "description": "Create a responsive header with primary navigation modeled after a darshan.ac.in-style IA; display the new generated wordmark image and institution name; compose shadcn-ui primitives where helpful (e.g., buttons/menus). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/site/Footer.tsx",
+          "operation": "create",
+          "description": "Create a site footer with consistent branding and quick links; include contact details sourced from the centralized config; compose shadcn-ui components (e.g., separators). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/site/MainLayout.tsx",
+          "operation": "create",
+          "description": "Create a shared layout wrapper used by all pages to enforce consistent header/footer/spacing rhythm and avoid duplicating structure across routes."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Centralize and replace all contact details/address across the site using a single frontend configuration object.",
+      "acceptanceCriteria": [
+        "Contact phone/email/address shown anywhere on the site are sourced from a single configuration file/object (single source of truth).",
+        "Footer and Contact page (or equivalent contact section) display the updated contact details and address.",
+        "A basic on-screen search through the codebase for the old values finds none (no stale contact/address strings)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/siteConfig.ts",
+          "operation": "create",
+          "description": "Add a single source-of-truth configuration object for institution name, contact phone(s), email, address, map link (optional), and social links (optional) to be consumed across header/footer/contact page."
+        },
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "create",
+          "description": "Implement the Contact page content using values from frontend/src/siteConfig.ts; include a contact-details section and a simple inquiry CTA (non-submitting) without backend dependencies; compose shadcn-ui components for cards/buttons. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/site/Footer.tsx",
+          "operation": "modify",
+          "description": "Replace any inline contact/address strings with imports from frontend/src/siteConfig.ts; ensure contact details are displayed consistently."
+        },
+        {
+          "path": "frontend/src/components/site/Header.tsx",
+          "operation": "modify",
+          "description": "Ensure any header utility contact items (if present) read from frontend/src/siteConfig.ts (or omit if not required) and remove any hardcoded/stale values."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Apply a distinct non-blue/non-purple theme with consistent palette, typography, spacing, and accessible interactive states across the site.",
+      "acceptanceCriteria": [
+        "The site uses a consistent, non-blue/non-purple primary palette (e.g., warm neutrals + an accent) across header, buttons, links, and highlights.",
+        "Typography choices (headings/body) and spacing scale are consistent across pages.",
+        "Key interactive states (hover/focus/active) match the new theme and remain accessible (focus is clearly visible)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust Tailwind theme tokens and any extended colors/typography choices to support a warm-neutral + accent palette (avoid blue/purple) and consistent spacing rhythm."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Define global CSS variables (shadcn-style tokens) for the new palette, typography defaults, and focus ring visibility; set base body/background/text styling for consistent theming across pages/components. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/site/MainLayout.tsx",
+          "operation": "modify",
+          "description": "Enforce consistent section spacing and max-width/container usage so all pages share the same vertical rhythm and responsive behavior."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Implement core darshan.ac.in-style marketing pages (Home, About, Academics/Departments, Admissions, Placements, News/Events, Contact) with responsive layouts and English copy.",
+      "acceptanceCriteria": [
+        "Navigation provides working routes/sections for the chosen set of pages that mirror the darshan.ac.in-style structure.",
+        "All pages render correctly on small screens (no horizontal overflow) and adapt layout at typical breakpoints.",
+        "All user-facing text in the app is in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire up client-side routes for Home, About, Academics/Departments, Admissions, Placements, News/Events, and Contact; wrap pages with MainLayout; ensure navigation links resolve correctly."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "create",
+          "description": "Create a responsive Home page with hero, highlights/stats, departments preview, and events/news preview sections using original English copy; compose shadcn-ui components (cards/buttons). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/AboutPage.tsx",
+          "operation": "create",
+          "description": "Create an About page (mission/vision/values, campus life overview, leadership snippet) using original English copy; compose shadcn-ui components for layout blocks. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/AcademicsPage.tsx",
+          "operation": "create",
+          "description": "Create an Academics/Departments page listing departments/programs and key academic highlights; render department cards from structured data; compose shadcn-ui components. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/AdmissionsPage.tsx",
+          "operation": "create",
+          "description": "Create an Admissions page describing eligibility, how to apply, important dates (static), and FAQs using original English copy; compose shadcn-ui components (accordion/cards/buttons). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/PlacementsPage.tsx",
+          "operation": "create",
+          "description": "Create a Placements page with placement support overview, stats, recruiters list (static data), and student outcomes section; compose shadcn-ui components. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/NewsEventsPage.tsx",
+          "operation": "create",
+          "description": "Create a News/Events page that lists upcoming events and recent news items rendered from structured data; compose shadcn-ui components for lists/cards. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/ContactPage.tsx",
+          "operation": "modify",
+          "description": "Ensure Contact page is fully responsive (stacking layout on mobile) and uses only English text throughout."
+        },
+        {
+          "path": "frontend/src/components/site/Header.tsx",
+          "operation": "modify",
+          "description": "Add/verify navigation items for all required pages and implement a mobile-friendly menu pattern; compose shadcn-ui components if needed. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add frontend-only structured content via typed data files and render repeatable sections from that data instead of hardcoded repeated markup.",
+      "acceptanceCriteria": [
+        "At least two repeatable site sections (e.g., departments cards, events list) are rendered from a typed data structure.",
+        "Updating the data file changes rendered content without modifying component structure.",
+        "No backend canister changes are required to update this content."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/content/departments.ts",
+          "operation": "create",
+          "description": "Create typed departments/programs data (name, short description, key areas, duration/level tags) for reuse across Home + Academics pages."
+        },
+        {
+          "path": "frontend/src/content/events.ts",
+          "operation": "create",
+          "description": "Create typed events/news data (title, date, category, summary, location) to render in Home previews and the News/Events page."
+        },
+        {
+          "path": "frontend/src/components/sections/DepartmentsGrid.tsx",
+          "operation": "create",
+          "description": "Create a reusable Departments grid section component that maps over frontend/src/content/departments.ts; compose shadcn-ui Card/Button components. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/sections/EventsList.tsx",
+          "operation": "create",
+          "description": "Create a reusable Events/News list component that maps over frontend/src/content/events.ts; compose shadcn-ui components for consistent list styling. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Replace repeated department/event markup with the reusable components rendering from typed data files."
+        },
+        {
+          "path": "frontend/src/pages/AcademicsPage.tsx",
+          "operation": "modify",
+          "description": "Render department listings from frontend/src/content/departments.ts (no repeated hardcoded cards)."
+        },
+        {
+          "path": "frontend/src/pages/NewsEventsPage.tsx",
+          "operation": "modify",
+          "description": "Render events/news listing from frontend/src/content/events.ts and ensure the page updates when the data file changes."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Add and use generated static assets (logo/wordmark, hero/banner illustration, monochrome icon set sprite) via the frontend public assets pipeline.",
+      "acceptanceCriteria": [
+        "Generated images exist under frontend/public/assets/generated and are referenced directly from the frontend (not through the backend).",
+        "The new logo/wordmark is visible in the site header and footer (or equivalent branding area).",
+        "The homepage hero/banner uses the generated hero image and matches the new theme."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/campus-wordmark.dim_512x160.png",
+          "operation": "create",
+          "description": "Add the generated original logo/wordmark image asset at the required path for direct static use in the UI."
+        },
+        {
+          "path": "frontend/public/assets/generated/hero-banner.dim_1600x600.png",
+          "operation": "create",
+          "description": "Add the generated wide hero/banner illustration asset at the required path for direct static use in the homepage hero."
+        },
+        {
+          "path": "frontend/public/assets/generated/theme-icons-sprite.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated monochrome icon sprite asset at the required path for use in highlights/features sections."
+        },
+        {
+          "path": "frontend/src/components/site/Header.tsx",
+          "operation": "modify",
+          "description": "Reference frontend/public/assets/generated/campus-wordmark.dim_512x160.png in the header branding area (image + institution name) and ensure it is responsive."
+        },
+        {
+          "path": "frontend/src/components/site/Footer.tsx",
+          "operation": "modify",
+          "description": "Reference frontend/public/assets/generated/campus-wordmark.dim_512x160.png in the footer branding area and ensure consistent sizing/contrast with the new theme."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Use frontend/public/assets/generated/hero-banner.dim_1600x600.png in the hero section and incorporate frontend/public/assets/generated/theme-icons-sprite.dim_512x512.png in a features/highlights block; compose shadcn-ui components for CTAs. Verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}
